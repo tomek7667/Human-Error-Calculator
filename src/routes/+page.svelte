@@ -56,11 +56,16 @@
 		K5: K5.Good,
 		isRoutine: true,
 		calculateResult: () => {
-			return (
+			const result =
 				Math.round(
-					parameters.K1 * parameters.K2 * parameters.K3 * parameters.K4 * parameters.K5 * 1000000
-				) / 1000000
-			);
+					(parameters.K1 * parameters.K2 * parameters.K3 * parameters.K4 * parameters.K5 +
+						Number.EPSILON) *
+						100 *
+						10
+				) /
+				10 /
+				100;
+			return result > 1 ? 1 : result;
 		}
 	};
 </script>
